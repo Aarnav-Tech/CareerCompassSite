@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Career Compass is a podcast helping students and young professionals navigate career choices and opportunities." />
+  <meta name="keywords" content="career podcast, career counselling, student advice, job tips, career guidance India" />
+  <meta name="author" content="Vaishnavi" />
+  <title>Career Compass 🧭🎓 | Podcast by Vaishnavi</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+  <!-- Funnel Display font -->
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Funnel Display', 'sans-serif']
+          },
+          fontSize: {
+            base: '16px'
+          },
+          fontWeight: {
+            normal: '500'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @font-face {
+      font-family: "Apple Color Emoji";
+      src: url("./AppleColorEmoji.ttf") format("truetype");
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Funnel Display', sans-serif;
+    }
+
+    .emoji {
+      font-family: "Apple Color Emoji", sans-serif;
+    }
+
+    .underline-animate {
+      display: inline-block;
+      position: relative;
+    }
+
+    .underline-animate::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 3px;
+      width: 0;
+      background-color: currentColor;
+      transition: width 1s ease-in-out;
+    }
+
+    .underline-animate.animate::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+
+  <!-- Header -->
+  <header class="bg-indigo-600 text-white p-4 shadow-md dark:bg-indigo-700">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <img src="logo.jpg" alt="Career Compass Logo" class="w-14 h-14 rounded-full object-cover" />
+        <h1 class="text-2xl font-bold">Career Compass <span class="emoji">🧭🎓</span></h1>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#listen" class="bg-white text-indigo-600 font-semibold px-4 py-2 rounded hover:bg-gray-100 text-sm sm:text-base dark:bg-gray-100 dark:text-indigo-700 dark:hover:bg-white">
+          Listen Now
+        </a>
+        <button id="themeToggle" class="text-xl px-3 py-1 rounded hover:bg-white dark:hover:bg-gray-700 transition">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow max-w-4xl mx-auto p-6 sm:p-12 space-y-12">
+
+    <!-- Hero -->
+    <section class="text-center px-4">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        <span class="underline-animate">Your Career Confusion Ends Here</span> <span class="emoji">🎓</span>
+      </h2>
+      <p class="text-base sm:text-lg max-w-2xl mx-auto font-semibold">
+        Cut through the noise. Real professionals. Real stories. Real talk.
+        <br />
+        Career Compass is your weekly dose of career clarity — made just for students like you.
+      </p>
+    </section>
+
+    <!-- Spotify Embed -->
+    <section id="listen" class="text-center px-4">
+      <h3 class="text-xl sm:text-2xl font-semibold mb-4">
+        <span class="underline-animate">Latest Episode</span> <span class="emoji">🎧</span>
+      </h3>
+      <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/show/3Fi53Syf86p6f2zF65tley"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allowtransparency="true"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </section>
+
+    <!-- Spotify Button -->
+    <section class="text-center">
+      <a href="https://open.spotify.com/show/3Fi53Syf86p6f2zF65tley" target="_blank"
+         class="mt-4 inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 text-base sm:text-lg font-semibold">
+         Follow on Spotify
+      </a>
+    </section>
+
+    <!-- About -->
+    <section class="bg-gray-50 dark:bg-gray-800 py-12 px-6 sm:px-12 text-center rounded-lg">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-6">
+        <span class="underline-animate">About Career Compass</span> <span class="emoji">🧭</span>
+      </h2>
+      <p class="max-w-3xl mx-auto text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-200 font-semibold">
+        Feeling lost about which career path to take? Don’t stress — <strong>Career Compass</strong> is here to guide you! <span class="emoji">🗣️</span><br><br>
+        Hosted by Vaishnavi, this podcast is designed to help youth across India explore a wide range of career options.
+        Through candid interviews with professionals from diverse fields, we uncover real stories — how they got started,
+        the pros and cons of their journey, and the steps you can take to follow in their footsteps.<br><br>
+        Whether you're in school, college, or just unsure of your next move, <strong>Career Compass</strong> offers
+        inspiration, clarity, and practical advice to help you find your path and shape your future.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 dark:bg-gray-900 text-center py-6 text-sm text-gray-600 dark:text-gray-400">
+    &copy; 2025 Career Compass. All rights reserved.
+  </footer>
+
+  <!-- Dark Mode + Animation Script -->
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    function updateIcon() {
+      toggle.textContent = htmlEl.classList.contains('dark') ? '🌞' : '🌙';
+    }
+
+    toggle.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      updateIcon();
+    });
+
+    updateIcon(); // Set correct icon on load
+
+    // Animate underline after page load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.underline-animate').forEach(el => {
+        el.classList.add('animate');
+      });
+    });
+  </script>
+
+</body>
+</html>
