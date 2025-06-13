@@ -8,11 +8,7 @@
   <meta name="author" content="Vaishnavi" />
   <title>Career Compass 🧭🎓 | Podcast by Vaishnavi</title>
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-
-  <!-- Funnel Display font -->
   <link href="https://fonts.googleapis.com/css2?family=Funnel+Display&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -32,8 +28,53 @@
       }
     }
   </script>
-
   <style>
+    .sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #f472b6 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkle-fade 0.6s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes sparkle-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2) translateY(-10px);
+  }
+}
+
+    @keyframes shine {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.shiny-text {
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    #ec4899 0%,
+    #f9a8d4 40%,
+    #ec4899 80%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 2s linear infinite;
+}
+
     @font-face {
       font-family: "Apple Color Emoji";
       src: url("https://github.com/samuelngs/apple-emoji-linux/releases/download/v18.4/AppleColorEmoji.ttf") format("truetype");
@@ -70,11 +111,15 @@
     .underline-animate.animate::after {
       width: 100%;
     }
+
+    .magnet-text {
+      display: inline-block;
+      transition: transform 0.2s ease;
+      will-change: transform;
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-
-  <!-- Header -->
   <header class="bg-indigo-600 text-white p-4 shadow-md dark:bg-indigo-700">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-3">
@@ -92,10 +137,7 @@
     </div>
   </header>
 
-  <!-- Main -->
   <main class="flex-grow max-w-4xl mx-auto p-6 sm:p-12 space-y-12">
-
-    <!-- Hero -->
     <section class="text-center px-4">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">
         <span class="underline-animate">Your Career Confusion Ends Here</span> <span class="emoji">🎓</span>
@@ -107,7 +149,6 @@
       </p>
     </section>
 
-    <!-- Spotify Embed -->
     <section id="listen" class="text-center px-4">
       <h3 class="text-xl sm:text-2xl font-semibold mb-4">
         <span class="underline-animate">Latest Episode</span> <span class="emoji">🎧</span>
@@ -122,7 +163,6 @@
       </iframe>
     </section>
 
-    <!-- Spotify Button -->
     <section class="text-center">
       <a href="https://open.spotify.com/show/3Fi53Syf86p6f2zF65tley" target="_blank"
          class="mt-4 inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 text-base sm:text-lg font-semibold">
@@ -130,7 +170,6 @@
       </a>
     </section>
 
-    <!-- About -->
     <section class="bg-gray-50 dark:bg-gray-800 py-12 px-6 sm:px-12 text-center rounded-lg">
       <h2 class="text-2xl sm:text-3xl font-bold mb-6">
         <span class="underline-animate">About Career Compass</span> <span class="emoji">🧭</span>
@@ -145,15 +184,22 @@
       </p>
     </section>
 
+    <section class="text-center mt-10">
+      <p class="text-base sm:text-lg font-semibold">
+        Follow Us on Instagram:
+        <span class="text-pink-600 underline hover:text-pink-800 transition-colors duration-300 cursor-pointer magnet-text shiny-text">
+          <a href="https://www.instagram.com/_career_.compass/" target="_blank">@_career_.compass</a>
+        </span>
+
+      </p>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-gray-100 dark:bg-gray-900 text-center py-6 text-sm text-gray-600 dark:text-gray-400">
     &copy; 2025 Career Compass. All rights reserved.
   </footer>
 
-  <!-- Dark Mode + Animation Script -->
-  <script>
+<script>
     const toggle = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
 
@@ -166,15 +212,53 @@
       updateIcon();
     });
 
-    updateIcon(); // Set correct icon on load
+    updateIcon();
 
-    // Animate underline after page load
     window.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.underline-animate').forEach(el => {
         el.classList.add('animate');
       });
     });
-  </script>
 
+const magnetText = document.querySelector('.magnet-text');
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (!isTouchDevice && magnetText) {
+  let textBounding;
+
+  document.addEventListener('mousemove', (e) => {
+    textBounding = magnetText.getBoundingClientRect();
+    const strength = 50;
+    const relX = e.clientX - textBounding.left;
+    const relY = e.clientY - textBounding.top;
+    const moveX = (relX - textBounding.width / 2) / strength;
+    const moveY = (relY - textBounding.height / 2) / strength;
+    magnetText.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+
+  magnetText.addEventListener('mouseleave', () => {
+    magnetText.style.transform = `translate(0, 0)`;
+  });
+} else {
+  // Mobile: Just keep shiny animation, remove magnet
+  if (magnetText) {
+    magnetText.style.transform = 'none';
+  }
+}
+if (isTouchDevice && magnetText) {
+  magnetText.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    document.body.appendChild(sparkle);
+
+    sparkle.style.left = `${touch.clientX - 5}px`;
+    sparkle.style.top = `${touch.clientY - 5}px`;
+
+    setTimeout(() => sparkle.remove(), 600);
+  });
+}
+
+</script>
 </body>
 </html>
